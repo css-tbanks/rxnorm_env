@@ -20,11 +20,11 @@ def df_save(path,c,r,s):
     print('PROCESS: Saving dataframes now...')
     for filename in os.listdir(path + '/rrf/'):
         if filename.lower() == 'rxnconso.rrf':
-            c.to_csv(archive + f'/rxnconso_{runid}.csv')
+            c.to_csv(archive + f'/rxnconso_{runid}.csv', index = False)
         elif filename.lower() == 'rxnrel.rrf':
-            r.to_csv(archive + f'/rxnrel_{runid}.csv')
+            r.to_csv(archive + f'/rxnrel_{runid}.csv', index = False)
         elif filename.lower() == 'rxnsat.rrf':
-            s.to_csv(archive + f'/rxnsat_{runid}.csv')
+            s.to_csv(archive + f'/rxnsat_{runid}.csv', index = False)
         else:
             print(f'WARNING: Unrecognized file: {filename}')
         print(f'INFO: {filename} saved.')
