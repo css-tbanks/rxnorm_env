@@ -21,31 +21,29 @@ fileid = '09132023' # datetime.today().strftime("%Y%m")
 url_id = config["rxNorm_weekly"]
 file_url = url_id # .format(fileid) -- for date formatting. not necessary during development
 
-print(file_url)
-
 def log(file):
     sys.stdout = open(file, 'w')
 
 def check_path(path,run):
-    print("check_path():")
+    print("PROCESS: check_path():")
     mypath = path + '/' + run
     if not os.path.isdir(mypath):
         os.makedirs(mypath)
-        print("Path has been created.")
+        print("INFO: Path has been created.")
     else:
-        print(f"Path has been identified.\nCurrently using: {mypath}")
+        print(f"INFO: Path has been identified.\nINFO: Currently using: {mypath}")
     return mypath
 
 folder_path = check_path(root_path,runid)
 
 
 def retrieve_rx(fileid):
-    print("retrieve_rx():\nChecking file status")
+    print("PROCESS: retrieve_rx():\nINFO: Checking file status")
     response = requests.get(file_url)
 
     open(folder_path + f'/RxNorm_weekly_prescribe_{fileid}.zip', "wb").write(response.content)
     # open(folder_path + f'/RxNorm{fileid}.zip', "wb").write(response.content)
-    print('file received and retrieved')
+    print('INFO: File received and retrieved')
 
 def extract_zip(fileid):
     # extract contents of zip file
